@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.WebJobs;
+﻿using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,6 +23,8 @@ namespace TelementryApp.Helpers
             });
 
             var config = (IConfiguration)builder.Services.First(d => d.ServiceType == typeof(IConfiguration)).ImplementationInstance;
+
+            builder.Services.AddSingleton(s => new CosmosClient(config[Constants.COSMOS_CONNECTION_STRING]));
         }
     }
 }

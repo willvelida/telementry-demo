@@ -26,7 +26,8 @@ namespace TelementryApp.Functions
         [FunctionName(nameof(TriggerEvents))]
         public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "TriggerEvents")] HttpRequest req,
-            [EventHub("", Connection = "")] IAsyncCollector<DeviceReading> outputEvents)
+            [EventHub("telementryreadings",
+            Connection = "EVENT_HUB_CONNECTION_STRING")] IAsyncCollector<DeviceReading> outputEvents)
         {
             IActionResult result = null;
 
