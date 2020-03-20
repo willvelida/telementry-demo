@@ -1,4 +1,5 @@
-﻿using Microsoft.Azure.Cosmos;
+﻿using Azure.Messaging.EventHubs.Producer;
+using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,6 +26,8 @@ namespace TelementryApp.Helpers
             var config = (IConfiguration)builder.Services.First(d => d.ServiceType == typeof(IConfiguration)).ImplementationInstance;
 
             builder.Services.AddSingleton(s => new CosmosClient(config[Constants.COSMOS_CONNECTION_STRING]));
+            builder.Services.AddSingleton(
+                s => new EventHubProducerClient(config[Constants.EVENT_HUB_CONNECTION_STRING], config[Constants.EVENT_HUB_NAME]));
         }
     }
 }

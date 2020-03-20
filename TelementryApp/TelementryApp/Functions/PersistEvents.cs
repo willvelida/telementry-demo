@@ -47,8 +47,7 @@ namespace TelementryApp.Functions
 
                     // Persist to cosmos db
                     await _telementryContainer.CreateItemAsync(telementryEvent);
-                    _logger.LogInformation($"{telementryEvent.DeviceId} has been persisted");
-                    
+                    _logger.LogInformation($"{telementryEvent.DeviceId} has been persisted");                  
                 }
                 catch (Exception ex)
                 {

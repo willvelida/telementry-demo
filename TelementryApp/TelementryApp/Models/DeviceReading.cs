@@ -9,8 +9,8 @@ namespace TelementryApp.Models
     {
         [JsonProperty("id")]
         public string DeviceId { get; set; }
-        public decimal Temperature { get; set; }
-        public string Level { get; set; }
+        public decimal DamageTemperature { get; set; }
+        public string DamageLevel { get; set; }
         public int DeviceAgeInDays { get; set; }
     }
 }
