@@ -1,4 +1,5 @@
 ﻿using Azure.Messaging.EventHubs.Producer;
+using Azure.Storage.Blobs;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Hosting;
@@ -28,6 +29,8 @@ namespace TelementryApp.Helpers
             builder.Services.AddSingleton(s => new CosmosClient(config[Constants.COSMOS_CONNECTION_STRING]));
             builder.Services.AddSingleton(
                 s => new EventHubProducerClient(config[Constants.EVENT_HUB_CONNECTION_STRING], config[Constants.EVENT_HUB_NAME]));
+
+            builder.Services.AddSingleton<IAzureStorageHelpers, AzureStorageHelpers>();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace TelementryApp.Functions
                 .RuleFor(i => i.DeviceTemperature, (fake) => Math.Round(fake.Random.Decimal(0.00m, 30.00m), 2))
                 .RuleFor(i => i.DamageLevel, (fake) => fake.PickRandom(new List<string> { "Low", "Medium", "High" }))
                 .RuleFor(i => i.DeviceAgeInDays, (fake) => fake.Random.Number(1, 60))
-                .GenerateLazy(5000);
+                .GenerateLazy(10);
 
                 foreach (var reading in deviceIterations)
                 {
