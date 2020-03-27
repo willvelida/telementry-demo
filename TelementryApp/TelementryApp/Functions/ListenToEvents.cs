@@ -47,7 +47,7 @@ namespace TelementryApp.Functions
                 CloudBlobContainer blobContainer = _azureStorageHelpers.GetBlobContainer(
                     cloudBlobClient, 
                     _config[Constants.STORAGE_CONTAINER]);
-                string backupFile = Path.Combine("backup.json");
+                string backupFile = Path.Combine($"{DateTime.Now.ToString("dd-MM-yyyy")}-backup.json");
 
                 if (input != null && input.Count > 0)
                 {
